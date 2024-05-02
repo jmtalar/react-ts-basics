@@ -1,8 +1,10 @@
 import { type ReactNode } from "react";
 
 interface CourseGoalProps {
+  id: number;
   title: string;
   children: ReactNode;
+  onDelete: (id: number) => void;
 }
 
 // const CourseGoal: FC<CourseGoalProps> = ({ title, children }) => {
@@ -19,14 +21,19 @@ interface CourseGoalProps {
 
 // export default CourseGoal;
 
-export default function CourseGoal({ title, children }: CourseGoalProps) {
+export default function CourseGoal({
+  id,
+  title,
+  children,
+  onDelete,
+}: CourseGoalProps) {
   return (
     <article>
       <div>
         <h2>{title}</h2>
         <p>{children}</p>
       </div>
-      <button>DELETE</button>
+      <button onClick={() => onDelete(id)}>DELETE</button>
     </article>
   );
 }
